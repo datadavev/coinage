@@ -3,16 +3,38 @@
 <head>
   <title>COiNS Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"
         rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Cousine:400,300,600" 
+  <link href="https://fonts.googleapis.com/css?family=Cousine:400,300,600"
         rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">  
+  <link rel="stylesheet" href="css/skeleton.css">
   <link rel="icon" type="image/png" href="images/favicon.ico">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script src="js/coins.js"></script>
   <script type="text/javascript">
+    $(document).ready(function() {
+      var metadata = {
+        url:'http://some.where/1/2.3',
+        ISBN:'123-123234-345345',
+        itemType: 'journalArticle',
+        title: 'A journal article test entry',
+        publicationTitle:'The Publication Title',
+        journalAbbreviation:'MD-Res',
+        volume:'85',
+        issue:'6',
+        pages:'1-10',
+        language: 'en',
+        creators:[{firstName:'Dave', lastName:'Nobody'},
+                  {firstName: 'Fred', lastName:'Peterson'}]
+      };
+      var meta_span = generateCOiNS(metadata);
+      $("#annotated").add(meta_span[0].outerHTML);
+      var para = document.getElementById("annotated");
+
+      notifyZoteroOfUpdates();
+      alert(meta_span[0].outerHTML);
+    });
   </script>
 </head>
 <body>
@@ -22,7 +44,6 @@
 <h4>Context Object in Spans Generator</h4>
 <h5>Context Object in Spans Generator</h5>
 <h6>Context Object in Spans Generator</h6>
-<p>About COiNS</p>
-
+<p id="annotated">About COiNS</p>
 </body>
 </html>
